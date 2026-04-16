@@ -10,7 +10,7 @@ public class App {
         Integer opcao = 0;
         while(opcao != 6){
             
-            System.out.println("Este é um CRUD de alunos! Digite 1 para cadastrar\nDigite 2 para mostrar\nDigite 3 para deletar"); 
+            System.out.println("Este é um CRUD de alunos! Digite 1 para cadastrar\nDigite 2 para mostrar\nDigite 3 para deletar\nDigite 4 para editar\nDigite 5 para filtrar"); 
             opcao = sc.nextInt();
             switch (opcao) {
                 case 1:
@@ -32,6 +32,9 @@ public class App {
                     Integer id2 = sc.nextInt();
                     editar(id2);
                     break;
+                case 5:
+
+                    
             }
         }
     }
@@ -70,12 +73,44 @@ public class App {
     public static void editar(Integer id){
         Scanner sc = new Scanner(System.in);
         Scanner sc2 = new Scanner(System.in);
-
         Aluno aluno = alunos.get(id);
-        System.out.println("O nome atual é: " + aluno.getNome)
-        integer opcao = sc.nextInt();
+        System.out.println("O nome do aluno é: "+aluno.getNome()+" digite 1 para editar: ");
+        Integer opcao = sc.nextInt();
         if(opcao == 1){
-            System.out.println("Digite o novo nome")
+            System.out.println("Digite o novo nome: ");
+            aluno.setNome(sc2.nextLine());
+        }
+        System.out.println("A idade do aluno é: "+aluno.getIdade()+" digite 1 para editar: ");
+        opcao = sc.nextInt();
+        if(opcao ==1){
+            System.out.println("Digite a nova idade: ");
+            aluno.setIdade(sc.nextInt());
+        }
+        System.out.println("O curso do aluno é: "+aluno.getCurso()+" digite 1 para editar: ");
+        opcao = sc.nextInt();
+        if(opcao ==1){
+            System.out.println("Digite o novo curso: ");
+            aluno.setCurso(sc2.nextLine());
+        }
+        System.out.println("A turma do aluno é: "+aluno.getTurma()+" digite 1 para editar: ");
+        opcao = sc.nextInt();
+        if(opcao ==1){
+            System.out.println("Digite o novo turma: ");
+            aluno.setTurma(sc2.nextLine());
+        }
+    }
+
+    public static void FiltrarPorNome(){
+        Scanner sc = new Scanner(System.in);
+        String nome = sc.nextLine();
+        System.out.println("Digite o nome para ser filtrado");
+        for (Aluno Individuo : alunos){
+            if(Individuo.getNome().contains(nome)){
+                System.out.println("Nome: "+Individuo.getNome());
+                System.out.println("Idade: "+Individuo.getIdade());
+                System.out.println("Turma: "+Individuo.getTurma());
+                System.out.println("Curso: "+Individuo.getCurso());
+            }   
         }
     }
 }
